@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
  */
 public class MyConnection {
     private static String DB_URL = "jdbc:sqlserver://localhost;"
-            + "databaseName=prj;";
+            + "databaseName=ourDatabase;";
     private static String USER_NAME = "doanh";
     private static String PASSWORD = "doanh";
     static Connection conn = null;

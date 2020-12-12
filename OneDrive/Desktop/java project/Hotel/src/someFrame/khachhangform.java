@@ -17,12 +17,12 @@ import static hotel.MyConnection.getConnection;
 
 /**
  *
- * @author 
+ * @author team2
  */
 public class khachhangform extends javax.swing.JFrame {
 
     /**
-     * Creates new form khachhangform
+     * Creates new form 
      */
     public khachhangform() {
         initComponents();
@@ -43,8 +43,7 @@ public class khachhangform extends javax.swing.JFrame {
 
             KhachHang kh;
             while (rs.next()) {
-                kh = new KhachHang(rs.getString("ID_GUEST"), rs.getString("NAME_GUEST"), rs.getString("EMAIL_GUEST"), rs.getString("PHONENUMBER_GUEST"), rs.getString("ADDRESS_GUEST"), rs.getInt("CODE_ROOM"), rs.getString("DOFB_GUEST"), rs.getString("EMPLOYEE_NAME") );
-
+                kh = new KhachHang(rs.getString("customer_Name"), rs.getString("customer_ID"), rs.getString("customer_Phone_number"), rs.getString("customer_Address"), rs.getString("customer_DateOfBirth"), rs.getInt("Room_Number"));
                 //Thêm vào danh sách
                 dskh.add(kh);
             }
@@ -55,7 +54,7 @@ public class khachhangform extends javax.swing.JFrame {
         return dskh;
     }
      public void hienThiDanhSachKhachHang() {
-        String colTieuDe1[] = new String[]{"Mã Khách Hàng", "Tên Khách Hàng", "Chứng Minh Nhân Dân", "Quốc Tịch", "Giới Tính", "Tuổi", "Số Điện Thoại", "Mã Phòng"};
+        String colTieuDe1[] = new String[]{"ID Guest", "Name Guest", "Guest Phone Number", "Guest Address", "Guest Date of Birth", "Guest Room"};
         ArrayList<KhachHang> dskh = layDanhSachKhachHang();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
@@ -67,14 +66,12 @@ public class khachhangform extends javax.swing.JFrame {
             row = new Object[8];
 
             // GÁN GIÁ TRỊ
-            row[0] = dskh.get(i).getMAKH();
-            row[1] = dskh.get(i).getTENKH();
-            row[2] = dskh.get(i).getCMND();
-            row[3] = dskh.get(i).getQUOCTICH();
-            row[4] = dskh.get(i).getGIOITINH();
-            row[5] = dskh.get(i).getTuoi();
-            row[6] = dskh.get(i).getSDT();
-            row[7] = dskh.get(i).getMAPHONG();
+            row[0] = dskh.get(i).getId_guest();
+            row[1] = dskh.get(i).getName_guest();
+            row[2] = dskh.get(i).getPhone_guest();
+            row[3] = dskh.get(i).getAddres_guest();
+            row[4] = dskh.get(i).getDoB_guest();
+            row[5] = dskh.get(i).getRoom_guest();
 
             model.addRow(row);
         }
@@ -99,19 +96,15 @@ public class khachhangform extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLabelAddress_guest = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextFieldMAKH = new javax.swing.JTextField();
-        jTextFieldTENKH = new javax.swing.JTextField();
-        jTextFieldDOFB = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldDiachi = new javax.swing.JTextField();
-        jTextFieldNhanvien = new javax.swing.JTextField();
-        jTextFieldSDT = new javax.swing.JTextField();
-        jTextFieldMAPHONGKH = new javax.swing.JTextField();
+        jTextFieldId_guest = new javax.swing.JTextField();
+        jTextFieldName_guest = new javax.swing.JTextField();
+        jTextFieldsdt = new javax.swing.JTextField();
+        jTextFieldAddress_guest = new javax.swing.JTextField();
+        jTextFieldDoB_guest = new javax.swing.JTextField();
+        jTextFieldRoom_guest = new javax.swing.JTextField();
         them1 = new javax.swing.JButton();
         sua1 = new javax.swing.JButton();
         xoa1 = new javax.swing.JButton();
@@ -132,39 +125,29 @@ public class khachhangform extends javax.swing.JFrame {
 
         jLabel11.setText("Tên Khách Hàng");
 
-        jLabel12.setText("ngay sinh");
+        jLabel12.setText("SDT");
 
-        jLabel13.setText("email");
+        jLabelAddress_guest.setText("Địa chỉ");
 
-        jLabel14.setText("dia chi");
+        jLabel14.setText("Ngày sinh");
 
-        jLabel15.setText("Nhan vien");
+        jLabel15.setText("Số phòng");
 
-        jLabel16.setText("Số Điện Thoại");
-
-        jLabel17.setText("Mã Phòng");
-
-        jTextFieldMAKH.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldId_guest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMAKHActionPerformed(evt);
+                jTextFieldId_guestActionPerformed(evt);
             }
         });
 
-        jTextFieldTENKH.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldName_guest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTENKHActionPerformed(evt);
+                jTextFieldName_guestActionPerformed(evt);
             }
         });
 
-        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldAddress_guest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailActionPerformed(evt);
-            }
-        });
-
-        jTextFieldMAPHONGKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMAPHONGKHActionPerformed(evt);
+                jTextFieldAddress_guestActionPerformed(evt);
             }
         });
 
@@ -230,21 +213,17 @@ public class khachhangform extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel13)
+                            .addComponent(jLabelAddress_guest)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17))
+                            .addComponent(jLabel15))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDOFB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTENKH, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldMAKH, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldMAPHONGKH, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldAddress_guest, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldName_guest, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldId_guest, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDoB_guest, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRoom_guest, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(them1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,36 +244,28 @@ public class khachhangform extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextFieldMAKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldId_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextFieldTENKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldName_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextFieldDOFB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAddress_guest)
+                    .addComponent(jTextFieldAddress_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextFieldDiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDoB_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextFieldNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jTextFieldSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextFieldMAPHONGKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(jTextFieldRoom_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jButtonclear2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,17 +377,13 @@ public class khachhangform extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldMAKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMAKHActionPerformed
+    private void jTextFieldId_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldId_guestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMAKHActionPerformed
+    }//GEN-LAST:event_jTextFieldId_guestActionPerformed
 
-    private void jTextFieldTENKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTENKHActionPerformed
+    private void jTextFieldName_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldName_guestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTENKHActionPerformed
-
-    private void jTextFieldMAPHONGKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMAPHONGKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMAPHONGKHActionPerformed
+    }//GEN-LAST:event_jTextFieldName_guestActionPerformed
 
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
@@ -424,8 +391,8 @@ public class khachhangform extends javax.swing.JFrame {
         try {
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
-            String query = "INSERT INTO GUEST(ID_GUEST,NAME_GUEST, EMAIL_GUEST, PHONENUMBER_GUEST, ADDRESS_GUEST, DOFB_GUEST, CODE_ROOM, EMPLOYEE_NAME) VALUES('" + jTextFieldMAKH.getText() + "',"
-            + "'" + jTextFieldTENKH.getText() + "','" + jTextFieldEmail.getText() + "', '" + jTextFieldSDT.getText() + "', '" + jTextFieldDiachi.getText() + "', '" + jTextFieldDOFB.getText() + "', '" + jTextFieldMAPHONGKH.getText() +"', '" + jTextFieldNhanvien.getText() + "')";
+            String query = "INSERT INTO Guest(customer_Name,customer_ID, customer_Phone_number, customer_Address, customer_DateOfBirth, Room_Number) VALUES('" + jTextFieldName_guest.getText() + "',"
+            + "'" + jTextFieldId_guest.getText() + "','" + jTextFieldsdt.getText() + "', '" + jTextFieldAddress_guest.getText() + "', '" + jTextFieldDoB_guest.getText() + "', '" + jTextFieldRoom_guest.getText() + "')";
 
             st.execute(query);
             hienThiDanhSachKhachHang();
@@ -448,14 +415,13 @@ public class khachhangform extends javax.swing.JFrame {
         }
         else{
             DefaultTableModel model = (DefaultTableModel) jTableKhachhang.getModel();
-            model.setValueAt(jTextFieldMAKH.getText(), jTableKhachhang.getSelectedRow(), 0);
-            model.setValueAt(jTextFieldTENKH.getText().toString(), jTableKhachhang.getSelectedRow(), 1);
-            model.setValueAt(jTextFieldDOFB.getText(), jTableKhachhang.getSelectedRow(), 2);
-            model.setValueAt(jTextFieldEmail.getText(), jTableKhachhang.getSelectedRow(), 3);
-            model.setValueAt(jTextFieldDiachi.getText(), jTableKhachhang.getSelectedRow(), 4);
-            model.setValueAt(jTextFieldNhanvien.getText(), jTableKhachhang.getSelectedRow(), 5);
-            model.setValueAt(jTextFieldSDT.getText(), jTableKhachhang.getSelectedRow(), 6);
-            model.setValueAt(jTextFieldMAPHONGKH.getText(), jTableKhachhang.getSelectedRow(), 7);
+            model.setValueAt(jTextFieldId_guest.getText(), jTableKhachhang.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldName_guest.getText().toString(), jTableKhachhang.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldsdt.getText(), jTableKhachhang.getSelectedRow(), 2);
+            model.setValueAt(jTextFieldAddress_guest.getText(), jTableKhachhang.getSelectedRow(), 3);
+            model.setValueAt(jTextFieldDoB_guest.getText(), jTableKhachhang.getSelectedRow(), 4);
+            model.setValueAt(jTextFieldRoom_guest.getText(), jTableKhachhang.getSelectedRow(), 5);
+           
         }
     }//GEN-LAST:event_sua1ActionPerformed
 
@@ -465,7 +431,7 @@ public class khachhangform extends javax.swing.JFrame {
         try {
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
-            String query = "DELETE FROM GUEST WHERE ID_GUEST = '" + jTextFieldMAKH.getText() + "'";
+            String query = "DELETE FROM Guest WHERE customer_ID = '" + jTextFieldId_guest.getText() + "'";
             st.executeUpdate(query);
             hienThiDanhSachKhachHang();
 
@@ -488,15 +454,13 @@ public class khachhangform extends javax.swing.JFrame {
 
     private void jButtonclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclear2ActionPerformed
         // TODO add your handling code here:
-        jTextFieldMAKH.setText("");
-        jTextFieldTENKH.setText("");
-        jTextFieldDOFB.setText("");
-        jTextFieldEmail.setText("");
-        jTextFieldDiachi.setText("");
-        jTextFieldNhanvien.setText("");
-        jTextFieldSDT.setText("");
-        jTextFieldMAPHONGKH.setText("");
-        jTextFieldMAKH.requestFocus();
+        jTextFieldId_guest.setText("");
+        jTextFieldName_guest.setText("");
+        jTextFieldsdt.setText("");
+        jTextFieldAddress_guest.setText("");
+        jTextFieldDoB_guest.setText("");
+        jTextFieldRoom_guest.setText("");
+        jTextFieldId_guest.requestFocus();
 
     }//GEN-LAST:event_jButtonclear2ActionPerformed
 
@@ -504,19 +468,18 @@ public class khachhangform extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = jTableKhachhang.getSelectedRow();
         TableModel model = jTableKhachhang.getModel();
-        jTextFieldMAKH.setText(model.getValueAt(i, 0).toString());
-        jTextFieldTENKH.setText(model.getValueAt(i, 1).toString());
-        jTextFieldDOFB.setText(model.getValueAt(i, 2).toString());
-        jTextFieldEmail.setText(model.getValueAt(i, 3).toString());
-        jTextFieldDiachi.setText(model.getValueAt(i, 4).toString());
-        jTextFieldNhanvien.setText(model.getValueAt(i, 5).toString());
-        jTextFieldSDT.setText(model.getValueAt(i, 6).toString());
-        jTextFieldMAPHONGKH.setText(model.getValueAt(i, 7).toString());
+        jTextFieldId_guest.setText(model.getValueAt(i, 0).toString());
+        jTextFieldName_guest.setText(model.getValueAt(i, 1).toString());
+        jTextFieldsdt.setText(model.getValueAt(i, 2).toString());
+        jTextFieldAddress_guest.setText(model.getValueAt(i, 3).toString());
+        jTextFieldDoB_guest.setText(model.getValueAt(i, 4).toString());
+        jTextFieldRoom_guest.setText(model.getValueAt(i, 5).toString());
+      
     }//GEN-LAST:event_jTableKhachhangMouseClicked
 
-    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+    private void jTextFieldAddress_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAddress_guestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailActionPerformed
+    }//GEN-LAST:event_jTextFieldAddress_guestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -559,25 +522,21 @@ public class khachhangform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAddress_guest;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableKhachhang;
-    private javax.swing.JTextField jTextFieldDOFB;
-    private javax.swing.JTextField jTextFieldDiachi;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldMAKH;
-    private javax.swing.JTextField jTextFieldMAPHONGKH;
-    private javax.swing.JTextField jTextFieldNhanvien;
-    private javax.swing.JTextField jTextFieldSDT;
-    private javax.swing.JTextField jTextFieldTENKH;
+    private javax.swing.JTextField jTextFieldAddress_guest;
+    private javax.swing.JTextField jTextFieldDoB_guest;
+    private javax.swing.JTextField jTextFieldId_guest;
+    private javax.swing.JTextField jTextFieldName_guest;
+    private javax.swing.JTextField jTextFieldRoom_guest;
+    private javax.swing.JTextField jTextFieldsdt;
     private javax.swing.JButton sua1;
     private javax.swing.JButton them1;
     private javax.swing.JButton thoat1;

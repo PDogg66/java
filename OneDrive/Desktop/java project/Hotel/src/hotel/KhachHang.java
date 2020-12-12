@@ -7,27 +7,23 @@ package hotel;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class KhachHang {
-    private String MAKH;
-    private String TENKH;
-    private String CMND;
-    private String QUOCTICH;
-    private String GIOITINH;
-    private int tuoi;
-    private String SDT;
-    private String MAPHONG;
+    private String id_guest;
+    private String name_guest;
+    private String dob_guest;
+    private String pn_guest;
+    private String address_guest;
+    private int room_guest;
 
-    public KhachHang(String MAKH, String TENKH, String CMND, String QUOCTICH, String GIOITINH, int tuoi, String SDT, String MAPHONG) {
-        this.MAKH = MAKH;
-        this.TENKH = TENKH;
-        this.CMND = CMND;
-        this.QUOCTICH = QUOCTICH;
-        this.GIOITINH = GIOITINH;
-        this.tuoi = tuoi;
-        this.SDT = SDT;
-        this.MAPHONG = MAPHONG;
+    public KhachHang(String name, String id, String pn, String address, String dob,int room) {
+        this.id_guest = id;
+        this.name_guest = name;
+        this.dob_guest = dob;
+        this.pn_guest = pn;
+        this.address_guest = address;
+        this.room_guest = room;
     }
 
     public KhachHang() {
@@ -37,73 +33,57 @@ public class KhachHang {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String getMAKH() {
-        return MAKH;
+    public String getId_guest() {
+        return this.id_guest;
     }
 
-    public void setMAKH(String MAKH) {
-        this.MAKH = MAKH;
+    public void setId_guest(String id) {
+        this.id_guest= id;
     }
 
-    public String getTENKH() {
-        return TENKH;
+    public String getName_guest() {
+        return this.name_guest;
     }
 
-    public void setTENKH(String TENKH) {
-        this.TENKH = TENKH;
+    public void setName_guest(String TENKH) {
+        this.name_guest = TENKH;
     }
 
-    public String getCMND() {
-        return CMND;
+    public String getPhone_guest() {
+        return this.pn_guest;
     }
 
-    public void setCMND(String CMND) {
-        this.CMND = CMND;
+    public void setPhone_guest(String sdt) {
+        this.pn_guest = sdt;
     }
 
-    public String getQUOCTICH() {
-        return QUOCTICH;
+    public String getAddres_guest() {
+        return this.address_guest;
     }
 
-    public void setQUOCTICH(String QUOCTICH) {
-        this.QUOCTICH = QUOCTICH;
+    public void setAddress_guest(String add) {
+        this.address_guest = add;
     }
 
-    public String getGIOITINH() {
-        return GIOITINH;
+    public String getDoB_guest() {
+        return this.dob_guest;
+    }
+    
+    public void setDoB_guest(String a) {
+         this.dob_guest= a;
     }
 
-    public void setGIOITINH(String GIOITINH) {
-        this.GIOITINH = GIOITINH;
+    public void setRoom_guest(int room) {
+        this.room_guest = room;
     }
 
-    public int getTuoi() {
-        return tuoi;
-    }
-
-    public void setTuoi(int tuoi) {
-        this.tuoi = tuoi;
-    }
-
-    public String getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
-    }
-
-    public String getMAPHONG() {
-        return MAPHONG;
-    }
-
-    public void setMAPHONG(String MAPHONG) {
-        this.MAPHONG = MAPHONG;
+    public int getRoom_guest() {
+        return this.room_guest;
     }
 
     @Override
     public String toString() {
-        return "khachHang{" + "MAKH=" + MAKH + ", TENKH=" + TENKH + ", CMND=" + CMND + ", QUOCTICH=" + QUOCTICH + ", GIOITINH=" + GIOITINH + ", tuoi=" + tuoi + ", SDT=" + SDT + ", MAPHONG=" + MAPHONG + '}';
+        return "guest{" + "ID=" + id_guest + ", Name=" + name_guest + ", PhoneNumber=" + pn_guest + ", Address=" + address_guest + ", DateOfBirth=" + dob_guest + ", Room=" + room_guest +'}';
     }
     
     

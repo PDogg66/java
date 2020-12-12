@@ -116,22 +116,18 @@
                                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAddress_guest" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldEmail" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldDOFB" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTENKH" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldMAKH" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldDiachi" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldNhanvien" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSDT" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldMAPHONGKH" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldAddress_guest" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldsdt" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldName_guest" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldId_guest" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDoB_guest" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldRoom_guest" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -159,44 +155,34 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldMAKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldId_guest" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldTENKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldName_guest" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDOFB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldsdt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAddress_guest" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddress_guest" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDiachi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDoB_guest" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldNhanvien" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldRoom_guest" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldSDT" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldMAPHONGKH" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jButtonclear2" min="-2" pref="28" max="-2" attributes="0"/>
@@ -235,61 +221,44 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ngay sinh"/>
+                <Property name="text" type="java.lang.String" value="SDT"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel13">
+            <Component class="javax.swing.JLabel" name="jLabelAddress_guest">
               <Properties>
-                <Property name="text" type="java.lang.String" value="email"/>
+                <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="dia chi"/>
+                <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nhan vien"/>
+                <Property name="text" type="java.lang.String" value="S&#x1ed1; ph&#xf2;ng"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="M&#xe3; Ph&#xf2;ng"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldMAKH">
+            <Component class="javax.swing.JTextField" name="jTextFieldId_guest">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMAKHActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldId_guestActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTENKH">
+            <Component class="javax.swing.JTextField" name="jTextFieldName_guest">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTENKHActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldName_guestActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldDOFB">
+            <Component class="javax.swing.JTextField" name="jTextFieldsdt">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldEmail">
+            <Component class="javax.swing.JTextField" name="jTextFieldAddress_guest">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEmailActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAddress_guestActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldDiachi">
+            <Component class="javax.swing.JTextField" name="jTextFieldDoB_guest">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldNhanvien">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSDT">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldMAPHONGKH">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMAPHONGKHActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="jTextFieldRoom_guest">
             </Component>
             <Component class="javax.swing.JButton" name="them1">
               <Properties>
