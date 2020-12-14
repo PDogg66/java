@@ -395,18 +395,27 @@ public class khachhangform extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showConfirmDialog(this, "Date format is not compatible. Check again for right format 'dddd-mm-yy'", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
             }
             if (jTextFieldId_guest.getText().matches("[0-9]+")){
                 System.out.println("right");
             }
             else{
                 JOptionPane.showConfirmDialog(this, "id contains character", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            }
+            if (jTextFieldName_guest.getText().matches("^[\\p{L}\\. \'-]+$")){
+                System.out.println("right");
+            }
+            else{
+                JOptionPane.showConfirmDialog(this, "name contains number or symbol", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
             }
             
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
-            String query = "INSERT INTO Guest(customer_Name,customer_ID, customer_Phone_number, customer_Address, customer_DateOfBirth, Room_Number) VALUES('" + jTextFieldName_guest.getText() + "',"
-            + "'" + jTextFieldId_guest.getText() + "','" + jTextFieldsdt.getText() + "', '" + jTextFieldAddress_guest.getText() + "', '" + jTextFieldDoB_guest.getText() + "', '" + jTextFieldRoom_guest.getText() + "')";
+            String query = "INSERT INTO Guest(customer_Name,customer_ID, customer_Phone_number, customer_Address, customer_DateOfBirth, Room_Number) VALUES(N'"+ jTextFieldName_guest.getText() + "',"
+            + "'" + jTextFieldId_guest.getText() + "','" + jTextFieldsdt.getText() + "', N'" + jTextFieldAddress_guest.getText() + "', '" + jTextFieldDoB_guest.getText() + "', '" + jTextFieldRoom_guest.getText() + "')";
 
             st.execute(query);
             hienThiDanhSachKhachHang();
