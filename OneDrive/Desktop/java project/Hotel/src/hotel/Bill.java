@@ -19,7 +19,14 @@ public class Bill {
     private int number_night;
     private final double vat = 0.1;
     private int id_guest;
-
+    public Bill(){
+        this.check_in="";
+        this.check_out="";
+        this.id_bill="";
+        this.id_employee="";
+        this.number_night=0;
+        this.room_number="";
+    }
     public Bill(String id_bill, String id_employee, String name_employee, String room_number, String check_in, String check_out, int number_night, int id_guest) {
         this.id_bill = id_bill;
         this.id_employee = id_employee;

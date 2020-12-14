@@ -23,36 +23,39 @@ public class billFrame extends javax.swing.JFrame {
     /**
      * Creates new form billFrame
      */
-    public billFrame() {
+    public billFrame(String s) {
         initComponents();
         getConnection();
-        displayBill();
+        KhachHang a = getGuest(s);
+        displayBill(a);
         
     }
-    Connection con=null;
+    Connection con=null;    
     Statement st=null;
     
-     public ArrayList<Bill> getBill() {
-        ArrayList<Bill> dskh = new ArrayList<Bill>();
+     public Bill getBill() {
         Connection con = getConnection();
+        Bill kh= null;
+
         try {
             st = (Statement) con.createStatement();
             String sql = "SELECT * FROM bill";
             // Thưcj thi câu lệnh truy vấn
             ResultSet rs = st.executeQuery(sql);
 
-            Bill kh;
             while (rs.next()) {
                 kh = new Bill(rs.getString("bill_ID"), rs.getString("employee_ID"), rs.getString("employee_Name"), rs.getString("Room_number"), rs.getString("Check_in"),
                         rs.getString("Check_out"),rs.getInt("Number_of_night"), rs.getInt("ID_guest"));
                 //Thêm vào danh sách
-                dskh.add(kh);
+            
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            System.out.println("Hong o getBill");
 
         }
-        return dskh;
+        
+        return kh;
     }
      public String getPrice(String room){
          Connection con = getConnection();
@@ -75,32 +78,55 @@ public class billFrame extends javax.swing.JFrame {
         }
         return price;
      }
-     public void displayBill() {
+     public void displayBill(KhachHang a) {
         String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price"};
-        ArrayList<Bill> dskh = getBill();
+        try{
+            jLabelID_guest.setText(a.getId_guest());
+            jLabelName_guest.setText(a.getName_guest());
+            jLabelPhone.setText(a.getPhone_guest());
+            
+        }catch(Exception ex){
+            System.out.println("No obj");
+        }
+        
+        
+        Bill dskh = getBill();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
         Object[] row;
-
-        for (int i = 0; i < dskh.size(); i++) {
-
-            row = new Object[8];
-
-            // GÁN GIÁ TRỊ
-            row[0] = dskh.get(i).getRoom_number();
-            row[1] = dskh.get(i).getCheck_in();
-            row[2] = dskh.get(i).getCheck_out();
-            row[3] = getPrice((String) row[0]);
-         
-            model.addRow(row);
-        }
+        row = new Object[8];
+        // GÁN GIÁ TRỊ
+        row[0] = dskh.getRoom_number();
+        row[1] = dskh.getCheck_in();
+        row[2] = dskh.getCheck_out();
+        row[3] = getPrice((String) row[0]);
+        model.addRow(row);
         
         //    }catch(ArrayIndexOutOfBoundsException ex){
-
         jTable1.setModel(model);
 
     }
+     public KhachHang getGuest(String s){
+         Connection con = getConnection();
+         Statement st=null;
+         KhachHang guest = null;
+            try {
+                // Tạo một đối tượng để thực hiện công việc
+                st = (Statement) con.createStatement();
+                String query = "SELECT * FROM Guest WHERE customer_ID = " + s ;
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    guest = new KhachHang(rs.getString("customer_Name"), rs.getString("customer_ID"), rs.getString("customer_Phone_number"), rs.getString("customer_Address"), rs.getString("customer_DateOfBirth"), rs.getInt("Room_Number"));
+                    
+                }
+                
+
+            } catch (Exception ex) {
+                System.out.println("Loi o getguest");
+            }
+            return guest;
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,13 +139,13 @@ public class billFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2Phone_number = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelID_guest = new javax.swing.JLabel();
+        jLabelName_guest = new javax.swing.JLabel();
+        jLabelPhone = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -154,47 +180,47 @@ public class billFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Id:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
-        jLabel5.setText("jLabel5");
+        jLabelID_guest.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
+        jLabelID_guest.setText("jLabel5");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
-        jLabel6.setText("jLabel6");
+        jLabelName_guest.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
+        jLabelName_guest.setText("jLabel6");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
-        jLabel7.setText("jLabel7");
+        jLabelPhone.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
+        jLabelPhone.setText("jLabel7");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Phone_numberLayout = new javax.swing.GroupLayout(jPanel2Phone_number);
+        jPanel2Phone_number.setLayout(jPanel2Phone_numberLayout);
+        jPanel2Phone_numberLayout.setHorizontalGroup(
+            jPanel2Phone_numberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Phone_numberLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(jLabelID_guest)
                 .addGap(123, 123, 123)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(jLabelName_guest)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(jLabelPhone)
                 .addGap(173, 173, 173))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel2Phone_numberLayout.setVerticalGroup(
+            jPanel2Phone_numberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Phone_numberLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Phone_numberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Phone_numberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(jLabel4)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelID_guest)
+                        .addComponent(jLabelPhone))
+                    .addGroup(jPanel2Phone_numberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel6)))
+                        .addComponent(jLabelName_guest)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -227,9 +253,7 @@ public class billFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2Phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1))
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
@@ -243,7 +267,7 @@ public class billFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2Phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219))
@@ -282,7 +306,8 @@ public class billFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new billFrame().setVisible(true);
+           
+                //new billFrame().setVisible(true);
             }
         });
     }
@@ -292,11 +317,11 @@ public class billFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelID_guest;
+    private javax.swing.JLabel jLabelName_guest;
+    private javax.swing.JLabel jLabelPhone;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel2Phone_number;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
