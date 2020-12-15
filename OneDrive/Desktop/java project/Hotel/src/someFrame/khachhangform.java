@@ -46,6 +46,7 @@ public class khachhangform extends javax.swing.JFrame {
             while (rs.next()) {
                 kh = new KhachHang(rs.getString("customer_Name"), rs.getString("customer_ID"), rs.getString("customer_Phone_number"), rs.getString("customer_Address"), rs.getString("customer_DateOfBirth"), rs.getInt("Room_Number"));
                 //Thêm vào danh sách
+                updateRoom(kh);
                 dskh.add(kh);
             }
         } catch (Exception ex) {
@@ -82,6 +83,27 @@ public class khachhangform extends javax.swing.JFrame {
         jTableKhachhang.setModel(model);
 
     }
+     public String checkRoom(String room){
+        Connection con = getConnection();
+         String status = "";
+        try {
+            st = (Statement) con.createStatement();
+            //String sql = "SELECT room_Price FROM room";
+             String name = (String) room;
+            String temp ="SELECT room_Status FROM room where Room_number='"+room+"';";
+            // Thưcj thi câu lệnh truy vấn
+            ResultSet rs = st.executeQuery(temp);
+            while (rs.next()) {
+                status = rs.getString("room_Status");
+                System.out.println(status);
+            }
+        } catch (Exception ex) {
+            //ex.printStackTrace();
+            System.out.println("Hong o check rum");
+
+        }
+        return status;
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -354,12 +376,31 @@ public class khachhangform extends javax.swing.JFrame {
     private void jTextFieldName_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldName_guestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldName_guestActionPerformed
-
+    public void updateRoom(KhachHang a){
+        Connection con = getConnection();
+        try{
+             st = (Statement) con.createStatement();
+            String query = "UPDATE room SET room_Status='rented' WHERE Room_number = '" + a.getRoom_guest() + "'";
+            st.executeUpdate(query);
+        }
+        catch(Exception ex){
+            System.out.println("loi o updateroom");
+        }
+    }
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
         try {
+            //ko dc ded trong
+            if("".equals(jTextFieldDoB_guest.getText()) && "".equals(jTextFieldAddress_guest.getText()) && "".equals(jTextFieldId_guest.getText())
+                    && "".equals(jTextFieldName_guest.getText()) && "".equals(jTextFieldRoom_guest.getText()) && "".equals(jTextFieldsdt.getText())){
+                JOptionPane.showConfirmDialog(this, "Not fill enough information", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            } else {
+                System.out.println("right");
+            }
             
+            //ngay ko dung form
             if (jTextFieldDoB_guest.getText().matches("\\d{4}-\\d{2}-\\d{2}")){
                 System.out.println("right");
             }
@@ -367,6 +408,8 @@ public class khachhangform extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(this, "Date format is not compatible. Check again for right format 'dddd-mm-yy'", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
             }
+            
+            //id  dc chua so
             if (jTextFieldId_guest.getText().matches("[0-9]+")){
                 System.out.println("right");
             }
@@ -374,11 +417,36 @@ public class khachhangform extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(this, "id contains character", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
             }
+            
+            //ten ko dc chua so
             if (jTextFieldName_guest.getText().matches("^[\\p{L}\\. \'-]+$")){
+                System.out.println("right");
+            }   
+            else{
+                JOptionPane.showConfirmDialog(this, "name contains number or symbol", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            }
+            
+            //so dien thoai dung form
+            if (jTextFieldsdt.getText().matches("(03|07|08|09|01[2|6|8|9])+([0-9]{8})")){
                 System.out.println("right");
             }
             else{
-                JOptionPane.showConfirmDialog(this, "name contains number or symbol", "Alert", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showConfirmDialog(this, "Phone number is wrong format", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            }
+            //so phogn dung form
+            if (jTextFieldRoom_guest.getText().matches("[0-9]+")){
+                System.out.println("right");
+            }
+            else{
+                JOptionPane.showConfirmDialog(this, "Room contains character", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            }
+            
+            //check the same room
+            if(checkRoom(jTextFieldRoom_guest.getText()).contains("rented")){
+                JOptionPane.showConfirmDialog(this, "Room rented", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
             }
             
