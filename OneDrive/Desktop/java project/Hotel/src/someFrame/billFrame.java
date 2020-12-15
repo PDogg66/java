@@ -84,6 +84,7 @@ public class billFrame extends javax.swing.JFrame {
         }
         return price;
      }
+     
      public void displayBill(KhachHang a) {
         String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price"};
         try{
