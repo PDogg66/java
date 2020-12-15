@@ -38,7 +38,7 @@ public class phongform extends javax.swing.JFrame {
         Connection con = getConnection();
         try {
             st = (Statement) con.createStatement();
-            String sql = "SELECT * FROM phong";
+            String sql = "SELECT * FROM room";
             // Thưcj thi câu lệnh truy vấn
             ResultSet rs = st.executeQuery(sql);
 

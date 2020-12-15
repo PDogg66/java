@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import org.joda.time.Days;
 
@@ -49,8 +50,8 @@ public class billFrame extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                kh = new Bill(rs.getString("bill_ID"), rs.getString("employee_ID"), rs.getString("employee_Name"), rs.getString("Room_number"), rs.getString("Check_in"),
-                        rs.getString("Check_out"),rs.getInt("Number_of_night"), rs.getInt("ID_guest"));
+                kh = new Bill(rs.getString("bill_ID"), rs.getString("Room_number"), rs.getString("Check_in"),
+                        rs.getString("Check_out"),rs.getInt("ID_guest"), rs.getString("Name_guest"));
                 //Thêm vào danh sách
             
             }
@@ -84,9 +85,12 @@ public class billFrame extends javax.swing.JFrame {
         }
         return price;
      }
-     
+     public int calculatePrice(String priceString, int days){
+         int i=Integer.parseInt(priceString);  
+         return i*days;
+     }
      public void displayBill(KhachHang a) {
-        String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price"};
+        String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price","total"};
         try{
             jLabelID_guest.setText(a.getId_guest());
             jLabelName_guest.setText(a.getName_guest());
@@ -106,15 +110,25 @@ public class billFrame extends javax.swing.JFrame {
         // GÁN GIÁ TRỊ
         row[0] = dskh.getRoom_number();
         row[1] = dskh.getCheck_in();
-        row[2] = dskh.getCheck_out();
+        row[2] = dskh.getCheck_out(); 
         row[3] = getPrice((String) row[0]);
-        model.addRow(row);
-        //tinh ngay
         LocalDate aa = convertToDate((String)row[1]);
         LocalDate bb = convertToDate((String)row[2]);
         long cc = ChronoUnit.DAYS.between(aa, bb);
+        int i=(int)cc; 
          System.out.println(cc);
         //tinh tien
+     
+        int tien = calculatePrice((String)row[3], i);
+        System.out.println("tong tien la"+tien);
+     
+
+        row[4]=""+tien+" VND";
+        model.addRow(row);
+        //tinh ngay
+        
+        
+        
         
         jTable1.setModel(model);
 
@@ -170,8 +184,6 @@ public class billFrame extends javax.swing.JFrame {
         jLabelPhone = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -271,24 +283,6 @@ public class billFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Total"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Thanks for your business ");
 
@@ -297,15 +291,10 @@ public class billFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2Phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2Phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1))
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,9 +315,7 @@ public class billFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2Phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -384,8 +371,6 @@ public class billFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2Phone_number;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
