@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class NewJFrametimkiem extends javax.swing.JFrame {
 

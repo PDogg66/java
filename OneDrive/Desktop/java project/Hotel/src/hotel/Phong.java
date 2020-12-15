@@ -7,7 +7,7 @@ package hotel;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class Phong {    
     public String room_Type,room_Price,room_Status,Room_number;

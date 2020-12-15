@@ -9,7 +9,7 @@ import static hotel.MyConnection.getConnection;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class QLKSK57 {
 

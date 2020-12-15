@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class MyConnection {
     private static String DB_URL = "jdbc:sqlserver://localhost;"

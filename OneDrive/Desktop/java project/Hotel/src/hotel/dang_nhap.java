@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class dang_nhap extends javax.swing.JFrame {
 

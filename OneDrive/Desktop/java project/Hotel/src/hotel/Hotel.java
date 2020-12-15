@@ -7,7 +7,7 @@ package hotel;
 import static hotel.MyConnection.getConnection;
 /**
  *
- * @author kunvt
+ * @author team2
  */
 public class Hotel {
 

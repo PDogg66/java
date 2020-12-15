@@ -128,8 +128,6 @@ public class billFrame extends javax.swing.JFrame {
         //tinh ngay
         
         
-        
-        
         jTable1.setModel(model);
 
     }

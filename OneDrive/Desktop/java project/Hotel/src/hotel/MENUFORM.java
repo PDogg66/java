@@ -15,7 +15,7 @@ import someFrame.phongform;
 
 /**
  *
- * @author khoa
+ * @author team2
  */
 public class MENUFORM extends javax.swing.JFrame {
 
