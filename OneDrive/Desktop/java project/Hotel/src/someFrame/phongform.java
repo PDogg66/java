@@ -77,7 +77,7 @@ public class phongform extends javax.swing.JFrame {
         
         //}catch(ArrayIndexOutOfBoundsException ex){
 
-        jTablePHONG.setModel(model);
+        jTable_price.setModel(model);
 
     }
 
@@ -92,7 +92,7 @@ public class phongform extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTablePHONG = new javax.swing.JTable();
+        jTable_price = new javax.swing.JTable();
         jPanel18 = new javax.swing.JPanel();
         jLabel_number = new javax.swing.JLabel();
         jLabel_type = new javax.swing.JLabel();
@@ -106,13 +106,14 @@ public class phongform extends javax.swing.JFrame {
         xoa3 = new javax.swing.JButton();
         thoat3 = new javax.swing.JButton();
         jButtonclear3 = new javax.swing.JButton();
+        jButton_search = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTablePHONG.setBackground(new java.awt.Color(240, 240, 240));
-        jTablePHONG.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
-        jTablePHONG.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_price.setBackground(new java.awt.Color(240, 240, 240));
+        jTable_price.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
+        jTable_price.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -120,15 +121,15 @@ public class phongform extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Số phòng", "Loại phòng", "Giá Phòng", "Tình trạng"
             }
         ));
-        jTablePHONG.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_price.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTablePHONGMouseClicked(evt);
+                jTable_priceMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(jTablePHONG);
+        jScrollPane4.setViewportView(jTable_price);
 
         jPanel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
 
@@ -192,6 +193,13 @@ public class phongform extends javax.swing.JFrame {
             }
         });
 
+        jButton_search.setText("Tìm kiếm");
+        jButton_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_searchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -202,29 +210,28 @@ public class phongform extends javax.swing.JFrame {
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(xoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(them3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonclear3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(them3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton_search)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonclear3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thoat3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(thoat3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 39, Short.MAX_VALUE))
-                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_status)
-                                    .addComponent(jLabel_type)
-                                    .addComponent(jLabel_number)
-                                    .addComponent(jLabel_price))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_room, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                    .addComponent(jTextField_type, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField_price, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField_status))))))
+                            .addComponent(jLabel_status)
+                            .addComponent(jLabel_type)
+                            .addComponent(jLabel_number)
+                            .addComponent(jLabel_price))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_room, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(jTextField_type, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_price, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_status))))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -246,11 +253,16 @@ public class phongform extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_status)
                     .addComponent(jTextField_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(them3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonclear3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(them3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonclear3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton_search)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(thoat3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -268,7 +280,7 @@ public class phongform extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(445, 445, 445)
                 .addComponent(jLabel22)
@@ -281,7 +293,7 @@ public class phongform extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
 
@@ -298,7 +310,7 @@ public class phongform extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -309,15 +321,15 @@ public class phongform extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTablePHONGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePHONGMouseClicked
+    private void jTable_priceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_priceMouseClicked
         // TODO add your handling code here:
-        int i = jTablePHONG.getSelectedRow();
-        TableModel model = jTablePHONG.getModel();
+        int i = jTable_price.getSelectedRow();
+        TableModel model = jTable_price.getModel();
         jTextField_room.setText(model.getValueAt(i, 0).toString());
         jTextField_type.setText(model.getValueAt(i, 1).toString());
         jTextField_price.setText(model.getValueAt(i, 2).toString());
         jTextField_status.setText(model.getValueAt(i, 3).toString());
-    }//GEN-LAST:event_jTablePHONGMouseClicked
+    }//GEN-LAST:event_jTable_priceMouseClicked
 
     private void them3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them3ActionPerformed
         // TODO add your handling code here
@@ -377,11 +389,78 @@ public class phongform extends javax.swing.JFrame {
 
     private void jTextField_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_typeActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField_typeActionPerformed
 
     private void jTextField_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_priceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_priceActionPerformed
+
+    private void jButton_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_searchActionPerformed
+        // TODO add your handling code here:
+        Phong dsp =new Phong();
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query ="select * from room where ";
+            int x=0;
+            if(!jTextField_room.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+="Room_number="+jTextField_room.getText();
+                }
+            }
+            if(!jTextField_type.getText().equals("")){
+                System.out.println("jTextField_type.getText(): "+ jTextField_type.getText());
+                if(x==0){
+                    x++;
+                    query+="room_Type="+"'"+jTextField_type.getText()+"'";
+                }
+                else query+= " and " + " room_Type = "+"'"+jTextField_type.getText()+"'";
+            }
+            else{
+                System.out.println("doang");
+            }
+            if(!jTextField_price.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" room_Price= "+jTextField_room.getText();
+                }
+                else query+= " and " + " room_Price= "+jTextField_price.getText();
+            }
+            if(!jTextField_status.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" room_Status= "+"'"+jTextField_room.getText()+"'";
+                }
+                else query+= " and " + " room_Status= "+"'"+jTextField_status.getText()+"'";
+            }
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+            dsp = new Phong(rs.getString("room_Type"), rs.getString("room_Price"), rs.getString("room_Status"), rs.getString("Room_number") );
+            }
+            String colTieuDe1[] = new String[]{"room_Type", "room_Price", "room_Status", "Room_number"};
+        DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
+
+        Object[] row;
+        row = new Object[4];
+            row[0] = dsp.getRoom_Type();
+            System.out.println(row[0]);
+            row[1] = dsp.getRoom_Price();
+            row[2] = dsp.getRoom_Status();
+            row[3] = dsp.getRoom_number();
+        
+        //}catch(ArrayIndexOutOfBoundsException ex){
+        model.addRow(row);
+
+        jTable_price.setModel(model);
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+    }//GEN-LAST:event_jButton_searchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,6 +501,7 @@ public class phongform extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_search;
     private javax.swing.JButton jButtonclear3;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel_number;
@@ -431,7 +511,7 @@ public class phongform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTablePHONG;
+    private javax.swing.JTable jTable_price;
     private javax.swing.JTextField jTextField_price;
     private javax.swing.JTextField jTextField_room;
     private javax.swing.JTextField jTextField_status;
