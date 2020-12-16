@@ -56,7 +56,7 @@ public class phongform extends javax.swing.JFrame {
         return dsp;
     }
     public void hienThiDanhSachPhong() {
-        String colTieuDe1[] = new String[]{"room_Type", "room_Price", "room_Status", "Room_number"};
+        String colTieuDe1[] = new String[]{ "Room_number","room_Type", "room_Price", "room_Status",};
         ArrayList<Phong> dsp = layDanhSachPhong();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
@@ -68,10 +68,10 @@ public class phongform extends javax.swing.JFrame {
             row = new Object[4];
 
             // GÁN GIÁ TRỊ
-            row[0] = dsp.get(i).getRoom_Type();
-            row[1] = dsp.get(i).getRoom_Price();
-            row[2] = dsp.get(i).getRoom_Status();
-            row[3] = dsp.get(i).getRoom_number();
+            row[0] = dsp.get(i).getRoom_number();
+            row[1] = dsp.get(i).getRoom_Type();
+            row[2] = dsp.get(i).getRoom_Price();
+            row[3] = dsp.get(i).getRoom_Status();
             model.addRow(row);
         }
         
@@ -103,7 +103,7 @@ public class phongform extends javax.swing.JFrame {
         jTextField_price = new javax.swing.JTextField();
         jTextField_status = new javax.swing.JTextField();
         them3 = new javax.swing.JButton();
-        xoa3 = new javax.swing.JButton();
+        Sua = new javax.swing.JButton();
         thoat3 = new javax.swing.JButton();
         jButtonclear3 = new javax.swing.JButton();
         jButton_search = new javax.swing.JButton();
@@ -141,6 +141,13 @@ public class phongform extends javax.swing.JFrame {
 
         jLabel_status.setText("Trạng thái");
 
+        jTextField_room.setText("203");
+        jTextField_room.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_roomActionPerformed(evt);
+            }
+        });
+
         jTextField_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_typeActionPerformed(evt);
@@ -163,13 +170,13 @@ public class phongform extends javax.swing.JFrame {
             }
         });
 
-        xoa3.setBackground(new java.awt.Color(225, 225, 225));
-        xoa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlksk57/Form/hinh/XOA.png"))); // NOI18N
-        xoa3.setText("Xóa");
-        xoa3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
-        xoa3.addActionListener(new java.awt.event.ActionListener() {
+        Sua.setBackground(new java.awt.Color(225, 225, 225));
+        Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlksk57/Form/hinh/XOA.png"))); // NOI18N
+        Sua.setText("Sửa");
+        Sua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
+        Sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xoa3ActionPerformed(evt);
+                SuaActionPerformed(evt);
             }
         });
 
@@ -209,7 +216,7 @@ public class phongform extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(xoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel18Layout.createSequentialGroup()
                                 .addComponent(them3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -237,11 +244,11 @@ public class phongform extends javax.swing.JFrame {
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_room, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_number))
-                .addGap(48, 48, 48)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_number)
+                    .addComponent(jTextField_room, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_type)
                     .addComponent(jTextField_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,7 +271,7 @@ public class phongform extends javax.swing.JFrame {
                         .addComponent(jButton_search)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(xoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(thoat3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -333,6 +340,13 @@ public class phongform extends javax.swing.JFrame {
 
     private void them3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them3ActionPerformed
         // TODO add your handling code here
+        if("".equals(jTextField_room.getText()) || "".equals(jTextField_price.getText()) || "".equals(jTextField_status.getText())
+                    || "".equals(jTextField_type.getText() )){
+                JOptionPane.showConfirmDialog(this, "Not fill enough information", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            } else {
+                System.out.println("right");
+            }
         Connection con = getConnection();
         try {
             // Tạo một đối tượng để thực hiện công việc
@@ -349,13 +363,16 @@ public class phongform extends javax.swing.JFrame {
 
     }//GEN-LAST:event_them3ActionPerformed
 
-    private void xoa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa3ActionPerformed
+    private void SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuaActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
         try {
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
-            String query = "DELETE FROM room WHERE room_Number = '" + jTextField_room.getText() + "'";
+            String query = "UPDATE room SET room_Type = '" + jTextField_type.getText() + "' ,"
+                    +" room_Price= "+jTextField_price.getText()
+                    +" ,room_Status= '"+jTextField_status.getText()+"'"
+                    +"where Room_number="+jTextField_room.getText();
             st.executeUpdate(query);
             hienThiDanhSachPhong();
 
@@ -364,7 +381,7 @@ public class phongform extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-    }//GEN-LAST:event_xoa3ActionPerformed
+    }//GEN-LAST:event_SuaActionPerformed
 
     private void thoat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoat3ActionPerformed
         // TODO add your handling code here:
@@ -440,16 +457,16 @@ public class phongform extends javax.swing.JFrame {
             while(rs.next()){
             dsp = new Phong(rs.getString("room_Type"), rs.getString("room_Price"), rs.getString("room_Status"), rs.getString("Room_number") );
             }
-            String colTieuDe1[] = new String[]{"room_Type", "room_Price", "room_Status", "Room_number"};
+            String colTieuDe1[] = new String[]{"Room_number","room_Type", "room_Price", "room_Status", };
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
         Object[] row;
         row = new Object[4];
-            row[0] = dsp.getRoom_Type();
+            row[0] = dsp.getRoom_number();
             System.out.println(row[0]);
-            row[1] = dsp.getRoom_Price();
-            row[2] = dsp.getRoom_Status();
-            row[3] = dsp.getRoom_number();
+            row[1] = dsp.getRoom_Type();
+            row[2] = dsp.getRoom_Price();
+            row[3] = dsp.getRoom_Status();
         
         //}catch(ArrayIndexOutOfBoundsException ex){
         model.addRow(row);
@@ -461,6 +478,10 @@ public class phongform extends javax.swing.JFrame {
             ex.printStackTrace();
         } 
     }//GEN-LAST:event_jButton_searchActionPerformed
+
+    private void jTextField_roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_roomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_roomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,6 +522,7 @@ public class phongform extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Sua;
     private javax.swing.JButton jButton_search;
     private javax.swing.JButton jButtonclear3;
     private javax.swing.JLabel jLabel22;
@@ -518,6 +540,5 @@ public class phongform extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_type;
     private javax.swing.JButton them3;
     private javax.swing.JButton thoat3;
-    private javax.swing.JButton xoa3;
     // End of variables declaration//GEN-END:variables
 }
