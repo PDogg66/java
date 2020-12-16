@@ -387,6 +387,17 @@ public class khachhangform extends javax.swing.JFrame {
             System.out.println("loi o updateroom");
         }
     }
+    public void updatedRoomtoAvailable(KhachHang a){
+        Connection con = getConnection();
+        try{
+             st = (Statement) con.createStatement();
+            String query = "UPDATE room SET room_Status='available' WHERE Room_number = '" + a.getRoom_guest() + "'";
+            st.executeUpdate(query);
+        }
+        catch(Exception ex){
+            System.out.println("loi o updateroom  sua thanh availabe");
+        }
+    }
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
@@ -473,8 +484,24 @@ public class khachhangform extends javax.swing.JFrame {
         try {
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
+            try{
+                String query1 = "SELECT * FROM Guest where customer_ID='"+jTextFieldId_guest.getText()+"'";
+                ResultSet rs = st.executeQuery(query1);
+                KhachHang kh = null;
+                while (rs.next()) {
+                   kh = new KhachHang(rs.getString("customer_Name"), rs.getString("customer_ID"), rs.getString("customer_Phone_number"), rs.getString("customer_Address"), rs.getString("customer_DateOfBirth"), rs.getInt("Room_Number"));
+                }
+                updatedRoomtoAvailable(kh);
+                System.out.println(kh.toString());
+            }
+            catch(Exception ex){
+                System.out.println("ko co obj aa");
+            }
             String query = "DELETE FROM Guest WHERE customer_ID = '" + jTextFieldId_guest.getText() + "'";
             st.executeUpdate(query);
+            
+            
+           
             hienThiDanhSachKhachHang();
 
         } catch (Exception ex) {
