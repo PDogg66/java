@@ -5,6 +5,7 @@
  */
 package someFrame;
 
+import hotel.Bill;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -379,7 +380,7 @@ public class khachhangform extends javax.swing.JFrame {
     public void updateRoom(KhachHang a){
         Connection con = getConnection();
         try{
-             st = (Statement) con.createStatement();
+            st = (Statement) con.createStatement();
             String query = "UPDATE room SET room_Status='rented' WHERE Room_number = '" + a.getRoom_guest() + "'";
             st.executeUpdate(query);
         }
@@ -398,13 +399,39 @@ public class khachhangform extends javax.swing.JFrame {
             System.out.println("loi o updateroom  sua thanh availabe");
         }
     }
+    public int checkRoom1(String a){
+         Connection con = getConnection();
+         Bill kh = null;
+         int i=0;
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            try{
+                String query1 = "SELECT COUNT(Room_number) FROM room where Room_number='"+a+"'";
+                ResultSet rs = st.executeQuery(query1);
+                System.out.println(rs);
+                while(rs.next()){
+                     i=rs.getInt("");
+                    System.out.println("i la "+i);
+                }
+                System.out.println(kh.toString());
+            }
+            catch(Exception ex){
+                System.out.println("ko co obj aa");         
+            }
+        }
+        catch(Exception ex){
+            System.out.println("hong o check room");
+        }
+        return i;
+    }
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
         try {
             //ko dc ded trong
-            if("".equals(jTextFieldDoB_guest.getText()) && "".equals(jTextFieldAddress_guest.getText()) && "".equals(jTextFieldId_guest.getText())
-                    && "".equals(jTextFieldName_guest.getText()) && "".equals(jTextFieldRoom_guest.getText()) && "".equals(jTextFieldsdt.getText())){
+            if("".equals(jTextFieldDoB_guest.getText()) || "".equals(jTextFieldAddress_guest.getText()) || "".equals(jTextFieldId_guest.getText())
+                    || "".equals(jTextFieldName_guest.getText()) || "".equals(jTextFieldRoom_guest.getText()) || "".equals(jTextFieldsdt.getText())){
                 JOptionPane.showConfirmDialog(this, "Not fill enough information", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
             } else {
@@ -460,6 +487,10 @@ public class khachhangform extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(this, "Room rented", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
             }
+             if(checkRoom1(jTextFieldRoom_guest.getText())==0){
+                 JOptionPane.showConfirmDialog(this, "Room is not in the list", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+             }
             
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
