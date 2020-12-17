@@ -136,6 +136,7 @@ public class khachhangform extends javax.swing.JFrame {
         xoa1 = new javax.swing.JButton();
         thoat1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonFind = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableKhachhang = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
@@ -225,6 +226,17 @@ public class khachhangform extends javax.swing.JFrame {
             }
         });
 
+        jButtonFind.setBackground(new java.awt.Color(225, 225, 225));
+        jButtonFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlksk57/Form/hinh/find2.png"))); // NOI18N
+        jButtonFind.setText("Tìm");
+        jButtonFind.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
+        jButtonFind.setFocusable(false);
+        jButtonFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -248,20 +260,21 @@ public class khachhangform extends javax.swing.JFrame {
                             .addComponent(jTextFieldAddress_guest)
                             .addComponent(jTextFieldDoB_guest)
                             .addComponent(jTextFieldRoom_guest))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(them1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButtonclear2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(them1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonFind, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonclear2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thoat1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,15 +303,24 @@ public class khachhangform extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jTextFieldRoom_guest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(them1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonclear2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonclear2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(them1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonFind, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -348,12 +370,9 @@ public class khachhangform extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -619,6 +638,97 @@ public class khachhangform extends javax.swing.JFrame {
         khf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindActionPerformed
+        // TODO add your handling code here:
+        KhachHang dsp =new KhachHang();
+        ArrayList<KhachHang> ds = new ArrayList<>();
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query ="select * from Guest where ";
+            int x=0;
+            if(!jTextFieldId_guest.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+="customer_ID="+jTextFieldId_guest.getText();
+                }
+            }
+            if(!jTextFieldName_guest.getText().equals("")){
+                System.out.println("jTextField_type.getText(): "+ jTextFieldName_guest.getText());
+                if(x==0){
+                    x++;
+                    query+="customer_Name="+"'"+jTextFieldName_guest.getText()+"'";
+                }
+                else query+= " and " + " custom_Name = "+"'"+jTextFieldName_guest.getText()+"'";
+            }
+            else{
+                System.out.println("doang");
+            }
+            if(!jTextFieldsdt.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" customer_Phone_number= "+jTextFieldsdt.getText();
+                }
+                else query+= " and " + " customer_Phone_number= "+jTextFieldsdt.getText();
+            }
+            if(!jTextFieldAddress_guest.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" customer_Address= "+"'"+jTextFieldAddress_guest.getText()+"'";
+                }
+                else query+= " and " + " customer_Address= "+"'"+jTextFieldAddress_guest.getText()+"'";
+            }
+            if(!jTextFieldDoB_guest.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" customer_DateOfBirth= "+"'"+jTextFieldDoB_guest.getText()+"'";
+                }
+                else query+= " and " + " customer_DateOfBirth= "+"'"+jTextFieldDoB_guest.getText()+"'";
+            }
+            if(!jTextFieldRoom_guest.getText().equals("")){
+                if(x==0){
+                    x++;
+                    query+=" Room_number= "+"'"+jTextFieldRoom_guest.getText()+"'";
+                }
+                else query+= " and " + " Room_number= "+"'"+jTextFieldRoom_guest.getText()+"'";
+            }
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+            dsp = new KhachHang(rs.getString("customer_Name"), rs.getString("customer_ID"), rs.getString("customer_Phone_number"), rs.getString("customer_Address"), rs.getString("customer_DateOfBirth"), rs.getInt("Room_Number") );
+            ds.add(dsp);
+            }
+            String colTieuDe1[] = new String[]{"ID Guest", "Name Guest", "Guest Phone Number", "Guest Address", "Guest Date of Birth", "Guest Room"};
+        DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
+
+        Object[] row;
+        
+        for (int i = 0; i < ds.size(); i++) {
+
+            row = new Object[8];
+
+            // GÁN GIÁ TRỊ
+            row = new Object[6];
+            row[0] = ds.get(i).getId_guest();
+            row[1] = ds.get(i).getName_guest();
+            row[2] = ds.get(i).getPhone_guest();
+            row[3] = ds.get(i).getAddres_guest();
+            row[4] = ds.get(i).getDoB_guest();
+            row[5] = ds.get(i).getRoom_guest();
+
+            model.addRow(row);
+        }
+        //}catch(ArrayIndexOutOfBoundsException ex){
+  
+
+        jTableKhachhang.setModel(model);
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
+    }//GEN-LAST:event_jButtonFindActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -657,6 +767,7 @@ public class khachhangform extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonFind;
     private javax.swing.JButton jButtonclear2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
