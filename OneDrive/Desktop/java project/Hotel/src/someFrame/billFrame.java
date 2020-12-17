@@ -38,17 +38,24 @@ public class billFrame extends javax.swing.JFrame {
     }
     Connection con=null;    
     Statement st=null;
-    
-     public Bill getBill() {
+     public String getDateForBill(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+        java.util.Date date = new java.util.Date();
+        String s = formatter.format(date);
+        System.out.println(s);
+        return s;
+    }
+     public Bill getBill(KhachHang a) {
         Connection con = getConnection();
         Bill kh= null;
-
+        String date = getDateForBill();
         try {
             st = (Statement) con.createStatement();
-            String sql = "SELECT * FROM bill";
+            String query1 = "UPDATE bill SET Check_out='"+date+"' WHERE bill_ID =" + a.getId_guest();
+            st.executeUpdate(query1);
+            String sql = "SELECT * FROM bill WHERE bill_ID="+a.getId_guest();
             // Thưcj thi câu lệnh truy vấn
             ResultSet rs = st.executeQuery(sql);
-
             while (rs.next()) {
                 kh = new Bill(rs.getString("bill_ID"), rs.getString("Room_number"), rs.getString("Check_in"),
                         rs.getString("Check_out"),rs.getInt("ID_guest"), rs.getString("Name_guest"));
@@ -86,8 +93,12 @@ public class billFrame extends javax.swing.JFrame {
         return price;
      }
      public int calculatePrice(String priceString, int days){
-         int i=Integer.parseInt(priceString);  
+         int i=Integer.parseInt(priceString);
+         if(days == 0){
+             return i;
+         }else{
          return i*days;
+         }
      }
      public void displayBill(KhachHang a) {
         String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price","total"};
@@ -101,7 +112,7 @@ public class billFrame extends javax.swing.JFrame {
         }
         
         
-        Bill dskh = getBill();
+        Bill dskh = getBill(a);
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 

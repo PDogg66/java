@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import hotel.KhachHang;
 import static hotel.MyConnection.getConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 
 /**
@@ -425,6 +427,28 @@ public class khachhangform extends javax.swing.JFrame {
         }
         return i;
     }
+    public String getDateForBill(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+        Date date = new Date();
+        String s = formatter.format(date);
+        System.out.println(s);
+        return s;
+    }
+    public void buildBill(KhachHang s){
+        Connection con = getConnection();
+        String date = getDateForBill();
+        try {
+            st = (Statement) con.createStatement();
+            String query = "INSERT INTO bill(bill_ID,Room_number, Check_in, Check_out, ID_guest, Name_guest) VALUES("+ s.getId_guest()
+            + "," + s.getRoom_guest() + ",'" + date + "','" + date + "'," + s.getId_guest()+ ", N'" + s.getName_guest() + "')";
+            st.execute(query);
+            System.out.println("hoan thanh bill");
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        
+    }
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
@@ -496,7 +520,11 @@ public class khachhangform extends javax.swing.JFrame {
             st = (Statement) con.createStatement();
             String query = "INSERT INTO Guest(customer_Name,customer_ID, customer_Phone_number, customer_Address, customer_DateOfBirth, Room_Number) VALUES(N'"+ jTextFieldName_guest.getText() + "',"
             + "'" + jTextFieldId_guest.getText() + "','" + jTextFieldsdt.getText() + "', N'" + jTextFieldAddress_guest.getText() + "', '" + jTextFieldDoB_guest.getText() + "', '" + jTextFieldRoom_guest.getText() + "')";
-
+            KhachHang a;
+            a = new KhachHang(jTextFieldName_guest.getText(),jTextFieldId_guest.getText(),jTextFieldsdt.getText(),jTextFieldAddress_guest.getText(),jTextFieldDoB_guest.getText(),Integer.parseInt(jTextFieldRoom_guest.getText()));
+            buildBill(a);
+            
+            
             st.execute(query);
             hienThiDanhSachKhachHang();
 
