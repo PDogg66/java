@@ -108,6 +108,7 @@ public class phongform extends javax.swing.JFrame {
         jButtonclear3 = new javax.swing.JButton();
         jButton_search = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,6 +204,7 @@ public class phongform extends javax.swing.JFrame {
         jButton_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlksk57/Form/hinh/find2.png"))); // NOI18N
         jButton_search.setText("Tìm");
         jButton_search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 173, 173)));
+        jButton_search.setFocusable(false);
         jButton_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_searchActionPerformed(evt);
@@ -306,11 +308,24 @@ public class phongform extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
+        jButton1.setBackground(new java.awt.Color(225, 225, 225));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlksk57/Form/hinh/re.png"))); // NOI18N
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(137, 137, 137)));
+        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1134, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(1078, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -319,7 +334,10 @@ public class phongform extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(384, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -485,6 +503,11 @@ public class phongform extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_roomActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        hienThiDanhSachPhong();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -525,6 +548,7 @@ public class phongform extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Sua;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_search;
     private javax.swing.JButton jButtonclear3;
     private javax.swing.JLabel jLabel22;
