@@ -674,9 +674,9 @@ public class khachhangform extends javax.swing.JFrame {
                 System.out.println("jTextField_type.getText(): "+ jTextFieldName_guest.getText());
                 if(x==0){
                     x++;
-                    query+="customer_Name="+"'"+jTextFieldName_guest.getText()+"'";
+                    query+="customer_Name="+"N'"+jTextFieldName_guest.getText()+"'";
                 }
-                else query+= " and " + " custom_Name = "+"'"+jTextFieldName_guest.getText()+"'";
+                else query+= " and " + " custom_Name = "+"N'"+jTextFieldName_guest.getText()+"'";
             }
             else{
                 System.out.println("doang");

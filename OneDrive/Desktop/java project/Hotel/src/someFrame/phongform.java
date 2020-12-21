@@ -436,6 +436,7 @@ public class phongform extends javax.swing.JFrame {
     private void jButton_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_searchActionPerformed
         // TODO add your handling code here:
         Phong dsp =new Phong();
+        ArrayList<Phong> ds = new ArrayList<>();
         Connection con = getConnection();
         try {
             // Tạo một đối tượng để thực hiện công việc
@@ -462,34 +463,38 @@ public class phongform extends javax.swing.JFrame {
             if(!jTextField_price.getText().equals("")){
                 if(x==0){
                     x++;
-                    query+=" room_Price= "+jTextField_room.getText();
+                    query+=" room_Price= "+jTextField_price.getText();
                 }
                 else query+= " and " + " room_Price= "+jTextField_price.getText();
             }
             if(!jTextField_status.getText().equals("")){
                 if(x==0){
                     x++;
-                    query+=" room_Status= "+"'"+jTextField_room.getText()+"'";
+                    query+=" room_Status= "+"'"+jTextField_status.getText()+"'";
                 }
                 else query+= " and " + " room_Status= "+"'"+jTextField_status.getText()+"'";
             }
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
             dsp = new Phong(rs.getString("room_Type"), rs.getString("room_Price"), rs.getString("room_Status"), rs.getString("Room_number") );
+            ds.add(dsp);
             }
             String colTieuDe1[] = new String[]{"Room_number","room_Type", "room_Price", "room_Status", };
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
         Object[] row;
-        row = new Object[4];
-            row[0] = dsp.getRoom_number();
+        for (int i=0;i<ds.size();i++){
+            row = new Object[4];
+            row[0] = ds.get(i).getRoom_number();
             System.out.println(row[0]);
-            row[1] = dsp.getRoom_Type();
-            row[2] = dsp.getRoom_Price();
-            row[3] = dsp.getRoom_Status();
+            row[1] = ds.get(i).getRoom_Type();
+            row[2] = ds.get(i).getRoom_Price();
+            row[3] = ds.get(i).getRoom_Status();
         
         //}catch(ArrayIndexOutOfBoundsException ex){
-        model.addRow(row);
+            model.addRow(row);
+        }
+        
 
         jTable_price.setModel(model);
             
