@@ -36,6 +36,7 @@ public class khachhangform extends javax.swing.JFrame {
     Connection con=null;
     Statement st=null;
     
+    //lay danh sach khach hang tu database
      public ArrayList<KhachHang> layDanhSachKhachHang() {
         ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
         Connection con = getConnection();
@@ -58,6 +59,8 @@ public class khachhangform extends javax.swing.JFrame {
         }
         return dskh;
     }
+     
+     //in danh sach khach hang da co tu database
      public void hienThiDanhSachKhachHang() {
         String colTieuDe1[] = new String[]{"ID Guest", "Name Guest", "Guest Phone Number", "Guest Address", "Guest Date of Birth", "Guest Room"};
         ArrayList<KhachHang> dskh = layDanhSachKhachHang();
@@ -86,6 +89,8 @@ public class khachhangform extends javax.swing.JFrame {
         jTableKhachhang.setModel(model);
 
     }
+     
+     //kiem tra xem trang thai cua phong do nhu the nao
      public String checkRoom(String room){
         Connection con = getConnection();
          String status = "";
@@ -414,6 +419,8 @@ public class khachhangform extends javax.swing.JFrame {
     private void jTextFieldName_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldName_guestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldName_guestActionPerformed
+    
+    //thuc hien chuyen status cua phong khi khach thue phong
     public void updateRoom(KhachHang a){
         Connection con = getConnection();
         try{
@@ -425,6 +432,8 @@ public class khachhangform extends javax.swing.JFrame {
             System.out.println("loi o updateroom");
         }
     }
+    
+    //khi xoa khach khoi phong, chuyen status cua phong tu RENTED sang AVAILABLE
     public void updatedRoomtoAvailable(KhachHang a){
         Connection con = getConnection();
         try{
@@ -436,6 +445,8 @@ public class khachhangform extends javax.swing.JFrame {
             System.out.println("loi o updateroom  sua thanh availabe");
         }
     }
+    
+    //kiem tra xem phogn do co trang database ko
     public int checkRoom1(String a){
          Connection con = getConnection();
          Bill kh = null;
@@ -462,6 +473,8 @@ public class khachhangform extends javax.swing.JFrame {
         }
         return i;
     }
+    
+    //lay ngay tu trong may tinh
     public String getDateForBill(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
         Date date = new Date();
@@ -469,6 +482,8 @@ public class khachhangform extends javax.swing.JFrame {
         System.out.println(s);
         return s;
     }
+    
+    //thuc hien tao BILL, khi GUEST duoc tao
     public void buildBill(KhachHang s){
         Connection con = getConnection();
         String date = getDateForBill();
@@ -484,6 +499,8 @@ public class khachhangform extends javax.swing.JFrame {
         }
         
     }
+    
+    //chuc nang them cua phan mem
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
@@ -558,8 +575,6 @@ public class khachhangform extends javax.swing.JFrame {
             KhachHang a;
             a = new KhachHang(jTextFieldName_guest.getText(),jTextFieldId_guest.getText(),jTextFieldsdt.getText(),jTextFieldAddress_guest.getText(),jTextFieldDoB_guest.getText(),Integer.parseInt(jTextFieldRoom_guest.getText()));
             buildBill(a);
-            
-            
             st.execute(query);
             hienThiDanhSachKhachHang();
 
@@ -572,6 +587,7 @@ public class khachhangform extends javax.swing.JFrame {
 
     }//GEN-LAST:event_them1ActionPerformed
 
+    //thuc hien chuc nang xoa
     private void xoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa1ActionPerformed
         // TODO add your handling code here:
         Connection con = getConnection();
@@ -604,6 +620,7 @@ public class khachhangform extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_xoa1ActionPerformed
 
+    //thuc hien chuc nang thoat
     private void thoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoat1ActionPerformed
         // TODO add your handling code here:
         thoat1.setToolTipText("Click để thoát chương trình ");
@@ -615,6 +632,7 @@ public class khachhangform extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_thoat1ActionPerformed
 
+    //thuc hien chuc nang clear
     private void jButtonclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonclear2ActionPerformed
         // TODO add your handling code here:
         jTextFieldId_guest.setText("");

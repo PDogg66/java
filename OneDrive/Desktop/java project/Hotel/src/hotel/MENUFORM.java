@@ -22,6 +22,7 @@ public class MENUFORM extends javax.swing.JFrame {
     /**
      * Creates new form MENUFORM
      */
+    //construct cua menuform 
     public MENUFORM() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -111,7 +112,8 @@ public class MENUFORM extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //nut chon quan ly khach hang, chuyen sang frame khach hang
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         khachhangform khf = new khachhangform();
@@ -119,10 +121,9 @@ public class MENUFORM extends javax.swing.JFrame {
         khf.pack();
         khf.setLocationRelativeTo(null);
         khf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
-
+   
+    //nnut chon quan ly phong, chuyen sang frame ve quan ly phong
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code 
         phongform pf = new phongform();

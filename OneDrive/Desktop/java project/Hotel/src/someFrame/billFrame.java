@@ -38,6 +38,8 @@ public class billFrame extends javax.swing.JFrame {
     }
     Connection con=null;    
     Statement st=null;
+    
+    //lay ngay tu trong may tinh
      public String getDateForBill(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
         java.util.Date date = new java.util.Date();
@@ -45,6 +47,8 @@ public class billFrame extends javax.swing.JFrame {
         System.out.println(s);
         return s;
     }
+     
+     //thuc hien tinh bill cho khach hang
      public Bill getBill(KhachHang a) {
         Connection con = getConnection();
         Bill kh= null;
@@ -59,7 +63,6 @@ public class billFrame extends javax.swing.JFrame {
             while (rs.next()) {
                 kh = new Bill(rs.getString("bill_ID"), rs.getString("Room_number"), rs.getString("Check_in"),
                         rs.getString("Check_out"),rs.getInt("ID_guest"), rs.getString("Name_guest"));
-                //Thêm vào danh sách
             
             }
         } catch (Exception ex) {
@@ -67,10 +70,10 @@ public class billFrame extends javax.swing.JFrame {
             System.out.println("Hong o getBill");
 
         }
-        
         return kh;
     }
    
+    //lay gia phogn tu trong bill table
      public String getPrice(String room){
          Connection con = getConnection();
          String price = "";
@@ -92,6 +95,8 @@ public class billFrame extends javax.swing.JFrame {
         }
         return price;
      }
+     
+     //tinh tien khi da biet so ngay khach thue va gia phong
      public int calculatePrice(String priceString, int days){
          int i=Integer.parseInt(priceString);
          if(days == 0){
@@ -100,6 +105,8 @@ public class billFrame extends javax.swing.JFrame {
          return i*days;
          }
      }
+     
+     //thuc hien print bill khach hang
      public void displayBill(KhachHang a) {
         String colTieuDe1[] = new String[]{"Room", "Check-in", "Check-out", "Price","total"};
         try{
@@ -109,9 +116,7 @@ public class billFrame extends javax.swing.JFrame {
             
         }catch(Exception ex){
             System.out.println("No obj");
-        }
-        
-        
+        } 
         Bill dskh = getBill(a);
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
@@ -142,6 +147,8 @@ public class billFrame extends javax.swing.JFrame {
         jTable1.setModel(model);
 
     }
+     
+     //thuc hien lay khach hang khi da co ID cua khach
      public KhachHang getGuest(String s){
          Connection con = getConnection();
          Statement st=null;
@@ -162,6 +169,8 @@ public class billFrame extends javax.swing.JFrame {
             }
             return guest;
      }
+     
+     //chuyen string sang localDate
      public LocalDate convertToDate(String sDate1){
          LocalDate date1 = null;
          try{
