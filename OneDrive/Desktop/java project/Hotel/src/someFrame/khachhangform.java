@@ -474,6 +474,32 @@ public class khachhangform extends javax.swing.JFrame {
         return i;
     }
     
+    public int checkId_guest(String a){
+        Connection con = getConnection();
+        int i=0;
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            try{
+                String query1 = "SELECT COUNT(bill_ID) FROM bill where bill_ID='"+a+"'";
+                ResultSet rs = st.executeQuery(query1);
+                System.out.println(rs);
+                while(rs.next()){
+                     i=rs.getInt("");
+                    System.out.println("i la "+i);
+                }
+               
+            }
+            catch(Exception ex){
+                //System.out.println("hong o cho ket noi o check guest id"); 
+                System.out.println(ex);
+            }
+        }
+        catch(Exception ex){
+            System.out.println("hong o check guest");
+        }
+        return i;
+    }
     //lay ngay tu trong may tinh
     public String getDateForBill(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
@@ -486,6 +512,7 @@ public class khachhangform extends javax.swing.JFrame {
     //thuc hien tao BILL, khi GUEST duoc tao
     public void buildBill(KhachHang s){
         Connection con = getConnection();
+        int i=0;
         String date = getDateForBill();
         try {
             st = (Statement) con.createStatement();
@@ -493,9 +520,12 @@ public class khachhangform extends javax.swing.JFrame {
             + "," + s.getRoom_guest() + ",'" + date + "','" + date + "'," + s.getId_guest()+ ", N'" + s.getName_guest() + "')";
             st.execute(query);
             System.out.println("hoan thanh bill");
+            i=1;
         }
         catch(Exception ex){
             System.out.println(ex);
+            System.out.println("builbill");
+            
         }
         
     }
@@ -567,6 +597,10 @@ public class khachhangform extends javax.swing.JFrame {
                  JOptionPane.showConfirmDialog(this, "Room is not in the list", "Alert", JOptionPane.DEFAULT_OPTION);
                 return;
              }
+             if(checkId_guest(jTextFieldId_guest.getText())!=0){
+                JOptionPane.showConfirmDialog(this, "ID existed in bill", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+             }
             
             // Tạo một đối tượng để thực hiện công việc
             st = (Statement) con.createStatement();
@@ -574,7 +608,14 @@ public class khachhangform extends javax.swing.JFrame {
             + "'" + jTextFieldId_guest.getText() + "','" + jTextFieldsdt.getText() + "', N'" + jTextFieldAddress_guest.getText() + "', '" + jTextFieldDoB_guest.getText() + "', '" + jTextFieldRoom_guest.getText() + "')";
             KhachHang a;
             a = new KhachHang(jTextFieldName_guest.getText(),jTextFieldId_guest.getText(),jTextFieldsdt.getText(),jTextFieldAddress_guest.getText(),jTextFieldDoB_guest.getText(),Integer.parseInt(jTextFieldRoom_guest.getText()));
-            buildBill(a);
+            try{
+                buildBill(a);
+            }
+            catch(Exception ex){
+                JOptionPane.showConfirmDialog(this, "id existed in bill", "Alert", JOptionPane.DEFAULT_OPTION);
+                return;
+            }
+            
             st.execute(query);
             hienThiDanhSachKhachHang();
 
@@ -582,8 +623,10 @@ public class khachhangform extends javax.swing.JFrame {
             //ex.printStackTrace();
             System.out.println("same id");
             JOptionPane.showConfirmDialog(this, "Id is the same", "Alert", JOptionPane.DEFAULT_OPTION);
+            return ;
             
         }
+        
 
     }//GEN-LAST:event_them1ActionPerformed
 
@@ -694,7 +737,7 @@ public class khachhangform extends javax.swing.JFrame {
                     x++;
                     query+="customer_Name="+"N'"+jTextFieldName_guest.getText()+"'";
                 }
-                else query+= " and " + " custom_Name = "+"N'"+jTextFieldName_guest.getText()+"'";
+                else query+= " and " + " customer_Name = "+"N'"+jTextFieldName_guest.getText()+"'";
             }
             else{
                 System.out.println("doang");
@@ -709,9 +752,9 @@ public class khachhangform extends javax.swing.JFrame {
             if(!jTextFieldAddress_guest.getText().equals("")){
                 if(x==0){
                     x++;
-                    query+=" customer_Address= "+"'"+jTextFieldAddress_guest.getText()+"'";
+                    query+=" customer_Address= "+"N'"+jTextFieldAddress_guest.getText()+"'";
                 }
-                else query+= " and " + " customer_Address= "+"'"+jTextFieldAddress_guest.getText()+"'";
+                else query+= " and " + " customer_Address= "+"N'"+jTextFieldAddress_guest.getText()+"'";
             }
             if(!jTextFieldDoB_guest.getText().equals("")){
                 if(x==0){
