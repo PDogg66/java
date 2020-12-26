@@ -704,7 +704,7 @@ public class khachhangform extends javax.swing.JFrame {
     private void jTextFieldAddress_guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAddress_guestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldAddress_guestActionPerformed
-
+     //a
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         billFrame khf=new billFrame(jTextFieldId_guest.getText());
